@@ -4,15 +4,17 @@ pipeline {
         stage ('Git Checkout') {
             steps {
                 script{
-                    git 'https://github.com/jallu225/hello-world.git'
+                    git branch: 'main', url: 'https://github.com/jallu225/demo-counter-app.git'
                 }
             }
         }
-        stage ('MVN Build') {
+        stage ('UNIT Testing') {
             steps {
                 script{
                     sh 'mvn clean install'
                 }
             }
         }
+
     }
+}
