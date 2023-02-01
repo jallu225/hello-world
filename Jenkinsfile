@@ -5,7 +5,7 @@ node {
     stage ('Unit test') {
         bat 'mvn test'
     }
-    stage ('mvn build') {
+    stage ('mavenn build') {
         bat 'mvn clean install'
     }
 }
