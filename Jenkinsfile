@@ -16,4 +16,7 @@ node {
             bat  "mvn clean package sonar:sonar"
         }
     }
+    stage('Quality gate Status'){
+        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+    }
 }
