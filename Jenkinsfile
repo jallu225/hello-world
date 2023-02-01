@@ -21,8 +21,7 @@ node {
         [
             [
                 artifactId: 'maven-project', 
-                classifier: '', 
-                file: 'target/webapp.war', 
+                classifier: '', file: 'helloworld-app/webapp/target/webapp.war', 
                 type: 'war'
                 ]
         ], 
