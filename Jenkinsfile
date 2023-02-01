@@ -19,4 +19,22 @@ node {
     stage('Quality gate Status'){
         waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
     }
+    stage('upload war file to nexus') {
+        nexusArtifactUploader artifacts: 
+        [
+            [
+                artifactId: 'maven-project', 
+                classifier: '', 
+                file: 'target/webapp.war', 
+                type: 'war'
+                ]
+        ], 
+        credentialsId: 'sonar-auth', 
+        groupId: 'com.example.maven-project', 
+        nexusUrl: '192.168.56.112:8081', 
+        nexusVersion: 'nexus3', 
+        protocol: 'http', 
+        repository: 'app-release', 
+        version: '1.0-SNAPSHOT'
+    }
 }
