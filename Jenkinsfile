@@ -5,7 +5,10 @@ node {
     stage ('Unit test') {
         bat 'mvn test'
     }
-    stage ('mavenn build') {
+    stage('Integration Testing'){
+        bat "mvn verify -DskipUnitTests"
+    }
+    stage ('Maven build') {
         bat 'mvn clean install'
     }
 }
