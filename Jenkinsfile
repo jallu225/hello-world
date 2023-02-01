@@ -16,9 +16,6 @@ node {
             bat  "mvn clean package sonar:sonar"
         }
     }
-    stage('Quality gate Status'){
-        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-    }
     stage('upload war file to nexus') {
         nexusArtifactUploader artifacts: 
         [
