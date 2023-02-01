@@ -11,4 +11,9 @@ node {
     stage ('Maven build') {
         bat 'mvn clean install'
     }
+    stage ('sonar analysis') {
+        withSonarQubeEnv(credentialsId: 'sonar-token') {            
+            bat  "mvn clean package sonar:sonar"
+        }
+    }
 }
